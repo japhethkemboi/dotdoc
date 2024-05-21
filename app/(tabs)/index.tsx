@@ -1,70 +1,81 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { View, SafeAreaView, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome6';
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+     <SafeAreaView>
+        <View style={styles.container}>
+          <View style={styles.header}>
+            <Text style={styles.title}>.doc</Text>
+	    <FontAwesome name='circle-user' size={30} color="#fff" />
+	  </View> 
+          <View style={styles.topHeader}>
+            <TouchableOpacity style={styles.tab}>
+              <Text style={styles.tabText}>All</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.tab}>
+              <Text style={styles.tabText}>Recent</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.tab}>
+              <Text style={styles.tabText}>Starred</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.content}>
+            <View style={styles.listItemContainer}>
+              <View>
+                <Text style={styles.itemTitle}>sample pdf title</Text>
+                <Text style={styles.itemSubTitle}>sample pdf sub title</Text>
+              </View>
+            </View>
+          </View>
+        </View>
+     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+    container: {
+        padding: 14,
+        paddingTop: 40,
+    },
+    header: {
+        flexDirection: 'row'
+    },
+    title: {
+        fontSize: 30,
+        fontWeight: '800',
+        color: '#fff',
+        flexGrow: 1,        
+    },
+    topHeader: {
+        flexDirection: 'row',
+        width: 'auto',
+        marginTop: 10,
+        padding: 2,
+        gap: 5,
+    },
+    tab: {
+        width: 'auto',
+        backgroundColor: "#fff",
+        padding: 5,
+        borderRadius: 10,
+    },
+    tabText: {
+        fontSize: 16,
+        fontWeight: '400',
+    },
+    content: {
+        paddingTop: 20,
+    },
+    listItemContainer: {
+        flexDirection: 'row'
+    },
+    itemTitle: {
+        fontSize: 20,
+        color: '#fff'
+    },
+    itemSubTitle: {
+        fontSize: 14,
+        color: '#e0ffff'
+    },
 });

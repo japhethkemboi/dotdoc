@@ -1,7 +1,7 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
+import Feather from 'react-native-vector-icons/Feather';
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
@@ -19,16 +19,16 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <Feather size={24} name='home' color={focused ? color : '#000'} />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="settings"
         options={{
-          title: 'Explore',
+          title: 'Settings',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <Feather size={24} name='gear' color={focused ? color : '#000'} />
           ),
         }}
       />
